@@ -107,8 +107,7 @@ insurance-risk-scoring/
 
 | Folder         | Description                                                          |
 | -------------- | -------------------------------------------------------------------- |
-| **data/**      | Dataset placeholders (raw data are not publicly available).          |
-| **notebooks/** | Jupyter notebooks documenting each step of the analysis.             |
+| **data/**      | Dataset placeholders (raw data are not publicly available).          |           |
 | **src/**       | Reusable Python scripts for preprocessing, modeling, and evaluation. |
 | **reports/**   | Project documentation and technical reports.                         |
 | **figures/**   | Charts, plots, and visualizations generated throughout the project.  |
