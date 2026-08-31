@@ -1,0 +1,83 @@
+[
+  {
+    "step": "pm_redundancy_decision",
+    "description": "Dropped segment_produit -- confirmed via crosstab to be a coarser grouping of produit_principal; kept the latter (higher IV, more granular)",
+    "detail": null
+  },
+  {
+    "step": "PM_scope",
+    "description": "Rows with a derivable target: 10285",
+    "detail": null
+  },
+  {
+    "step": "PM_categorical_missing",
+    "description": "Missing categoricals set to 'Manquant' (own WOE bin), not imputed",
+    "detail": null
+  },
+  {
+    "step": "PM_bucket_rare",
+    "description": "Bucketed ['produit_principal', 'activite_principale', 'Ville'] to top 15 categories + 'Autres'",
+    "detail": null
+  },
+  {
+    "step": "PM_split",
+    "description": "Stratified RANDOM split 75/25 (no transaction date available -- see module docstring)",
+    "detail": {
+      "train_rows": 7713,
+      "test_rows": 2572
+    }
+  },
+  {
+    "step": "PM_output",
+    "description": "Saved WOE + raw feature sets (train/test)",
+    "detail": {
+      "woe_features": 13,
+      "raw_features": 13
+    }
+  },
+  {
+    "step": "PP_scope",
+    "description": "Rows with a derivable target: 103915",
+    "detail": null
+  },
+  {
+    "step": "PP_categorical_missing",
+    "description": "Missing categoricals set to 'Manquant' (own WOE bin), not imputed",
+    "detail": null
+  },
+  {
+    "step": "PP_numeric_impute",
+    "description": "age_capped: median imputation (48.00) + was_missing flag",
+    "detail": {
+      "n_missing": 1201
+    }
+  },
+  {
+    "step": "PP_numeric_impute",
+    "description": "anciennete_annees_capped: median imputation (5.00) + was_missing flag",
+    "detail": {
+      "n_missing": 788
+    }
+  },
+  {
+    "step": "PP_bucket_rare",
+    "description": "Bucketed ['produit_principal', 'profession', 'ville'] to top 15 categories + 'Autres'",
+    "detail": null
+  },
+  {
+    "step": "PP_split",
+    "description": "Stratified RANDOM split 75/25 (no transaction date available -- see module docstring)",
+    "detail": {
+      "train_rows": 77936,
+      "test_rows": 25979
+    }
+  },
+  {
+    "step": "PP_output",
+    "description": "Saved WOE + raw feature sets (train/test)",
+    "detail": {
+      "woe_features": 11,
+      "raw_features": 13
+    }
+  }
+]
