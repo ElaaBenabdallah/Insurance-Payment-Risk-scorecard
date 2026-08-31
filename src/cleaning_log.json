@@ -1,0 +1,196 @@
+[
+  {
+    "step": "dedup_client_id",
+    "description": "Collapsed duplicate client_id rows caused by agent-code join conflict",
+    "before": 20389,
+    "after": 14620,
+    "detail": {
+      "rows_removed": 5769,
+      "clients_with_agent_conflict": 723
+    }
+  },
+  {
+    "step": "drop_empty_columns",
+    "description": "Dropped columns that are entirely (or almost entirely) empty",
+    "before": 23,
+    "after": 20,
+    "detail": {
+      "dropped": [
+        "segment_anciennete_client",
+        "email",
+        "tel"
+      ]
+    }
+  },
+  {
+    "step": "resolve_status_redundancy",
+    "description": "statut_client dropped (redundant with fidelite_client); derived is_active flag",
+    "before": null,
+    "after": null,
+    "detail": {
+      "dropped": [
+        "statut_client"
+      ]
+    }
+  },
+  {
+    "step": "drop_unreliable_tenure",
+    "description": "Dropped anciennete_annees (PM) \u2014 unreliable, superseded by anciennete_entreprise",
+    "before": null,
+    "after": null,
+    "detail": null
+  },
+  {
+    "step": "fix_future_dates",
+    "description": "Nulled out impossible future company-creation dates",
+    "before": null,
+    "after": null,
+    "detail": {
+      "rows_affected": 5
+    }
+  },
+  {
+    "step": "parse_and_cap_dmp",
+    "description": "Parsed DMP to float days, capped at 99th percentile",
+    "before": null,
+    "after": null,
+    "detail": {
+      "p99_cap_days": 492.2,
+      "rows_capped": 103,
+      "missing_dmp": 4335
+    }
+  },
+  {
+    "step": "parse_products",
+    "description": "Parsed multi-value produit field into nb_produits + produit_principal",
+    "before": null,
+    "after": null,
+    "detail": null
+  },
+  {
+    "step": "log_transform_capitaux",
+    "description": "Added log1p(Capitaux_Totaux) alongside raw value",
+    "before": null,
+    "after": null,
+    "detail": null
+  },
+  {
+    "step": "summary_pm",
+    "description": "PM cleaning complete",
+    "before": 20389,
+    "after": 14620,
+    "detail": null
+  },
+  {
+    "step": "derive_target",
+    "description": "Derived target_default_proxy from dmp_days > 30 days",
+    "before": null,
+    "after": null,
+    "detail": {
+      "labeled_rows": 10285,
+      "unlabeled_rows_excluded": 4335,
+      "default_rate_among_labeled": 0.6763
+    }
+  },
+  {
+    "step": "dedup_client_id",
+    "description": "Collapsed duplicate client_id rows caused by agent-code join conflict",
+    "before": 137643,
+    "after": 125618,
+    "detail": {
+      "rows_removed": 12025,
+      "clients_with_agent_conflict": 3087
+    }
+  },
+  {
+    "step": "drop_empty_columns",
+    "description": "Dropped columns that are entirely (or almost entirely) empty",
+    "before": 19,
+    "after": 16,
+    "detail": {
+      "dropped": [
+        "segment_age",
+        "segment_profession",
+        "niveau_revenu_estim\u00e9"
+      ]
+    }
+  },
+  {
+    "step": "resolve_status_redundancy_pp",
+    "description": "statut_client dropped (redundant with fidelite_client); derived is_active flag",
+    "before": null,
+    "after": null,
+    "detail": null
+  },
+  {
+    "step": "cap_tenure_pp",
+    "description": "Capped implausible client tenure values (>70 years) to missing",
+    "before": null,
+    "after": null,
+    "detail": {
+      "rows_capped": 802
+    }
+  },
+  {
+    "step": "cap_age",
+    "description": "Nulled implausible ages (<16 or >100)",
+    "before": null,
+    "after": null,
+    "detail": {
+      "below_16": 220,
+      "above_100": 2270
+    }
+  },
+  {
+    "step": "parse_and_cap_dmp_pp",
+    "description": "Parsed DMP to float days, capped at 99th percentile",
+    "before": null,
+    "after": null,
+    "detail": {
+      "p99_cap_days": 354.4,
+      "rows_capped": 1040,
+      "missing_dmp": 21703
+    }
+  },
+  {
+    "step": "parse_products_pp",
+    "description": "Parsed multi-value produit field into nb_produits + produit_principal",
+    "before": null,
+    "after": null,
+    "detail": null
+  },
+  {
+    "step": "log_transform_capitaux_pp",
+    "description": "Added log1p(Capitaux_Totale) alongside raw value",
+    "before": null,
+    "after": null,
+    "detail": null
+  },
+  {
+    "step": "summary_pp",
+    "description": "PP cleaning complete",
+    "before": 137643,
+    "after": 125618,
+    "detail": null
+  },
+  {
+    "step": "derive_target",
+    "description": "Derived target_default_proxy from dmp_days > 30 days",
+    "before": null,
+    "after": null,
+    "detail": {
+      "labeled_rows": 103915,
+      "unlabeled_rows_excluded": 21703,
+      "default_rate_among_labeled": 0.4299
+    }
+  },
+  {
+    "step": "cross_file_overlap_flagged",
+    "description": "client_id values appearing in BOTH pm and pp \u2014 flagged for supervisor review, not altered",
+    "before": null,
+    "after": null,
+    "detail": {
+      "overlapping_ids": 91
+    }
+  }
+]
