@@ -140,10 +140,10 @@ To respect data privacy and company policies, this repository includes only the 
 * Data Cleaning ✔
 * Exploratory Data Analysis ✔
 * Feature Engineering ✔
-* WOE & Information Value Analysis ⏳
-* Logistic Regression Scorecard ⏳
-* XGBoost Model ⏳
-* Model Evaluation ⏳
+* WOE & Information Value Analysis ✔
+* Logistic Regression Scorecard ✔
+* XGBoost Model ✔
+* Model Evaluation ✔
 
 ---
 
